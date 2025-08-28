@@ -15,17 +15,27 @@ if (isset($_COOKIE['auth'])) {
     // tidak ada allowed_classes, tidak ada verifikasi signature — ini inti vuln-nya
     $auth = @unserialize($raw);
 
-    // dukung object atau array; kita sengaja tidak memverifikasi ke DB
-    if (is_object($auth) && isset($auth->id)) {
-        $user_id = $auth->id;           // <- nilai ini sepenuhnya dikontrol attacker lewat cookie
-    } elseif (is_array($auth) && isset($auth['id'])) {
-        $user_id = $auth['id'];
+   
+    <?php
+// Saat login berhasil (misal di login.php)
+$user_data = ['id' => $user_id, 'email' => $email];
+setcookie('auth', base64_encode(json_encode($user_data)), time() + 3600, '/', '', true, true);
+
+// Di tiap halaman yang butuh login
+if (isset($_COOKIE['auth'])) {
+    $auth = json_decode(base64_decode($_COOKIE['auth']), true);
+
+    if (isset($auth['id'])) {
+        $user_id = $auth['id']; // User terautentikasi
     } else {
-        // kalau cookie rusak, paksa login ulang
         header('location: login.php');
         exit;
-    }
+    
 } else {
+    header('location: login.php');
+    exit;
+}
+?>
     // fallback lama kalau memang masih pakai session
     if (!isset($_SESSION['id'])) {
         header('location: login.php');

@@ -1,0 +1,149 @@
+/* General Body & Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #FAFAFA; /* Warna background khas Instagram */
+    color: #262626;
+}
+
+a {
+    color: #0095f6;
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/* Main Container Layout */
+.main-content {
+    max-width: 614px; /* Lebar feed Instagram di desktop */
+    margin: 30px auto;
+}
+
+/* Post Card Styling (Menggantikan .comments-container) */
+.post-card {
+    background-color: #FFFFFF;
+    border: 1px solid #DBDBDB;
+    border-radius: 8px;
+    margin-bottom: 24px;
+}
+
+/* Post Header */
+.post-header {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    border-bottom: 1px solid #DBDBDB;
+}
+
+.post-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.post-username {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.post-username a {
+    color: #262626; /* Warna username hitam */
+}
+
+/* Post Image */
+.post-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Post Actions (Like, Comment Icons) */
+.post-actions {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+}
+
+.post-actions form {
+    margin-right: 12px;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.action-btn i {
+    font-size: 24px; /* Ukuran ikon lebih besar */
+    color: #262626;
+}
+
+.action-btn i.fa-heart.text-success {
+    color: #ED4956; /* Warna merah untuk like */
+}
+
+.action-icon {
+    font-size: 24px;
+    margin-left: 12px;
+    color: #262626;
+    cursor: pointer;
+}
+
+/* Post Info (Likes, Caption, Comments) */
+.post-info {
+    padding: 0 16px 16px;
+}
+
+.post-likes {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.post-caption {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.post-caption .username {
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+.post-timestamp {
+    color: #8E8E8E;
+    font-size: 10px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+/* Comment Section */
+.post-comments {
+    padding: 0 16px;
+    font-size: 14px;
+}
+
+.comment {
+    display: flex;
+    margin-bottom: 8px;
+}
+
+.comment .username {
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+/* Menghilangkan gaya komentar lama */
+.comments-list:before, .comments-list:after, .reply-list:before, .reply-list li:before {
+    display: none;
+}
